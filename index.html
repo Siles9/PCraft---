@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>PCraft – конструктор ПК</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000000;
+            color: #ffffff;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.5;
+        }
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+        /* Левая панель */
+        .left-panel {
+            width: 340px;
+            background: #111111;
+            border-right: 1px solid #2a2a2a;
+            transition: width 0.3s ease;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .left-panel.collapsed {
+            width: 70px;
+        }
+        .left-panel.collapsed .panel-content {
+            display: none;
+        }
+        .panel-toggle {
+            background: #1a1a1a;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.8rem;
+            text-align: center;
+            width: 100%;
+            color: white;
+            transition: 0.2s;
+        }
+        .panel-toggle:hover {
+            background: #333;
+        }
+        .panel-content {
+            padding: 1.5rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+        .profile {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #2a2a2a;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .builds-list {
+            margin-bottom: 1.5rem;
+        }
+        .build-tab {
+            display: inline-block;
+            background: #1a1a1a;
+            padding: 0.4rem 1rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .build-tab.active, .build-tab:hover {
+            background: white;
+            color: black;
+        }
+        .catalog-filters {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .catalog-filters input, .catalog-filters select {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 0.8rem;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+        .catalog-filters input:focus, .catalog-filters select:focus {
+            border-color: #666;
+        }
+        .components-list {
+            max-height: 55vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .component-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            padding: 1rem;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .component-card:hover {
+            background: #222;
+            border-color: #555;
+        }
+        .component-card .price {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin: 0.3rem 0;
+        }
+        button.addToBuildBtn {
+            background: #2a2a2a;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            color: white;
+            width: 100%;
+            transition: 0.2s;
+        }
+        button.addToBuildBtn:hover {
+            background: white;
+            color: black;
+        }
+        /* Правая область */
+        .right-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 1.5rem;
+        }
+        .marketplace-carts {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cart-square {
+            padding: 0.8rem 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            min-width: 130px;
+            transition: transform 0.1s;
+        }
+        .cart-ozon { background: #005b9f; color: white; }
+        .cart-wb { background: #9b2d30; color: white; }
+        .cart-ym { background: #fc3f1d; color: white; }
+        .cart-total { background: #ffffff; color: black; }
+        .control-block {
+            background: #111111;
+            border: 1px solid #2a2a2a;
+        }
+        .control-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            background: #1a1a1a;
+            transition: 0.2s;
+        }
+        .control-header:hover {
+            background: #222;
+        }
+        .control-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            padding: 1rem;
+            border-top: 1px solid #2a2a2a;
+        }
+        .control-buttons button {
+            background: #2a2a2a;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .control-buttons button:hover {
+            background: white;
+            color: black;
+        }
+        .compatibility-block {
+            background: #111111;
+            border: 1px solid #2a2a2a;
+            padding: 1rem;
+        }
+        .compat-message {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+        .error { color: #ff8888; }
+        .warning { color: #ffaa66; }
+        .ok { color: #88ff88; }
+        .build-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+        .build-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .build-title input {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 0.4rem 0.8rem;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .build-description {
+            margin-bottom: 1rem;
+        }
+        .build-description input {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 0.4rem 0.8rem;
+            color: white;
+            width: 100%;
+        }
+        .delete-build-btn {
+            background: #4a1a1a;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .delete-build-btn:hover {
+            background: #8b2a2a;
+        }
+        .build-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            max-height: 40vh;
+            overflow-y: auto;
+        }
+        .build-item {
+            background: #111111;
+            border: 1px solid #2a2a2a;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .build-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .build-item-actions button {
+            background: #2a2a2a;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .build-item-actions button:hover {
+            background: white;
+            color: black;
+        }
+        .recommendations {
+            margin-top: 1rem;
+            border-top: 1px solid #2a2a2a;
+            padding-top: 1rem;
+        }
+        .multi-sort {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .sort-chip {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.8rem;
+        }
+        .sort-chip:hover, .sort-chip.active {
+            background: white;
+            color: black;
+            border-color: white;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #111;
+            border: 1px solid #333;
+            padding: 2rem;
+            width: 500px;
+            max-width: 90%;
+        }
+        .close-modal {
+            float: right;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        .offer-item {
+            background: #1a1a1a;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            border: 1px solid #2a2a2a;
+        }
+        .offer-item a {
+            color: #88aaff;
+            text-decoration: none;
+        }
+        .offer-item button {
+            background: #2a2a2a;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        .offer-item button:hover {
+            background: white;
+            color: black;
+        }
+        input, select {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 0.6rem;
+            color: white;
+        }
+        .user-type-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .user-type-selector select {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 0.3rem;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+        }
+        button, .sort-chip, .build-tab {
+            border-radius: 0px;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="left-panel" id="leftPanel">
+        <button class="panel-toggle" id="toggleCatalogBtn">☰</button>
+        <div class="panel-content">
+            <div class="profile">👤 Пользователь</div>
+            <div class="builds-list" id="buildsListContainer" style="display: none;"></div>
+            <div class="catalog-filters">
+                <input type="text" id="searchInput" placeholder="Поиск...">
+                <select id="categoryFilter">
+                    <option value="all">Все категории</option>
+                    <option value="cpu">Процессоры</option>
+                    <option value="motherboard">Материнские платы</option>
+                    <option value="gpu">Видеокарты</option>
+                    <option value="ram">ОЗУ</option>
+                    <option value="storage">Накопители</option>
+                    <option value="psu">БП</option>
+                    <option value="case">Корпуса</option>
+                    <option value="cooler">Охлаждение</option>
+                </select>
+                <div class="multi-sort" id="sortContainer"></div>
+                <button id="refreshCatalogBtn">🔄 Обновить каталог</button>
+            </div>
+            <div id="componentsList" class="components-list">Загрузка...</div>
+        </div>
+    </div>
+
+    <div class="right-area">
+        <div class="marketplace-carts">
+            <div class="cart-square cart-ozon">🛒 Ozon: <span id="ozonTotal">0</span> ₽</div>
+            <div class="cart-square cart-wb">🛍️ WB: <span id="wbTotal">0</span> ₽</div>
+            <div class="cart-square cart-ym">🔍 Яндекс: <span id="yandexTotal">0</span> ₽</div>
+            <div class="cart-square cart-total">💰 Итого: <span id="grandTotal">0</span> ₽</div>
+        </div>
+
+        <div class="control-block" id="controlBlock">
+            <div class="control-header" id="toggleControlBtn">
+                <span>⚙️ Управление сборкой</span>
+                <span>▼</span>
+            </div>
+            <div class="control-buttons" id="controlButtons">
+                <button id="newBuildBtn">✨ Новая сборка</button>
+                <button id="saveBuildBtn">💾 Сохранить в файл</button>
+                <button id="loadBuildBtn">📂 Загрузить из файла</button>
+                <button id="exportCSVBtn" class="company-only">📄 CSV</button>
+                <button id="exportPDFBtn" class="company-only">🖨️ PDF</button>
+            </div>
+        </div>
+
+        <div class="compatibility-block">
+            <strong>🔍 Совместимость</strong>
+            <div id="compatibilityStatus"></div>
+        </div>
+
+        <!-- Блок "Моя сборка" с редактированием названия и описания, удалением -->
+        <div>
+            <div class="build-header">
+                <div class="build-title">
+                    <h3>🛠️</h3>
+                    <input type="text" id="buildNameInput" placeholder="Название сборки" style="font-weight: bold;">
+                    <button id="deleteBuildBtn" class="delete-build-btn" style="display: none;">🗑️ Удалить сборку</button>
+                </div>
+                <div class="user-type-selector">
+                    <label>👤 Тип: </label>
+                    <select id="userTypeSelect">
+                        <option value="user">Обычный</option>
+                        <option value="company">Компания</option>
+                    </select>
+                </div>
+            </div>
+            <div class="build-description">
+                <input type="text" id="buildDescInput" placeholder="Описание сборки (необязательно)">
+            </div>
+            <div id="buildComponentsList" class="build-list"></div>
+        </div>
+
+        <div class="recommendations">
+            <strong>📌 Рекомендованные сборки</strong>
+            <div id="recommendationsList" style="display: flex; gap: 0.8rem; margin-top: 0.8rem; flex-wrap: wrap;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно выбора продавца -->
+<div id="offerModal" style="display:none;" class="modal-overlay">
+    <div class="modal-content">
+        <span id="closeModal" class="close-modal">&times;</span>
+        <h3>Выберите продавца</h3>
+        <div id="offersList"></div>
+        <div style="margin-top:1rem;">
+            <label>Вручную: <input type="number" id="manualPrice" placeholder="Цена"></label>
+            <label>Доставка (дн): <input type="number" id="manualDelivery" value="3"></label>
+            <button id="setManualBtn" style="background:#2a2a2a; color:white; padding:0.5rem 1rem; margin-top:0.5rem;">Установить</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ---------- Глобальные ----------
+    let components = [];
+    let currentBuild = null;
+    let userType = 'user';
+    let currentComponentForOffer = null;
+    let currentOffers = [];
+    let allBuilds = [];
+    let currentBuildId = null;
+    let activeSorts = [];
+
+    // DOM элементы
+    const componentsListDiv = document.getElementById('componentsList');
+    const buildComponentsDiv = document.getElementById('buildComponentsList');
+    const compatibilityDiv = document.getElementById('compatibilityStatus');
+    const userTypeSelect = document.getElementById('userTypeSelect');
+    const ozonSpan = document.getElementById('ozonTotal');
+    const wbSpan = document.getElementById('wbTotal');
+    const yandexSpan = document.getElementById('yandexTotal');
+    const grandSpan = document.getElementById('grandTotal');
+    const buildsListContainer = document.getElementById('buildsListContainer');
+    const buildNameInput = document.getElementById('buildNameInput');
+    const buildDescInput = document.getElementById('buildDescInput');
+    const deleteBuildBtn = document.getElementById('deleteBuildBtn');
+
+    // ---------- Классы ----------
+    class Offer {
+        constructor(marketplace, price, availability, deliveryDays, rating, url) {
+            this.marketplace = marketplace;
+            this.price = price;
+            this.availability = availability;
+            this.deliveryDays = deliveryDays;
+            this.sellerRating = rating;
+            this.url = url;
+        }
+    }
+
+    class BuildComponent {
+        constructor(componentId, quantity = 1, selectedOffer = null) {
+            this.componentId = componentId;
+            this.quantity = quantity;
+            this.selectedOffer = selectedOffer;
+        }
+    }
+
+    class Build {
+        constructor(id, name = "Новая сборка", description = "") {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+            this.components = [];
+            this.createdAt = new Date().toISOString();
+            this.updatedAt = new Date().toISOString();
+        }
+        _touch() { this.updatedAt = new Date().toISOString(); }
+        addComponent(componentId, quantity = 1, selectedOffer = null) {
+            let existing = this.components.find(c => c.componentId === componentId);
+            if (existing) existing.quantity += quantity;
+            else this.components.push(new BuildComponent(componentId, quantity, selectedOffer));
+            this._touch();
+        }
+        removeComponent(componentId, removeAll = false) {
+            if (removeAll) {
+                this.components = this.components.filter(c => c.componentId !== componentId);
+            } else {
+                let existing = this.components.find(c => c.componentId === componentId);
+                if (existing && existing.quantity > 1) existing.quantity--;
+                else this.components = this.components.filter(c => c.componentId !== componentId);
+            }
+            this._touch();
+        }
+        setSelectedOffer(componentId, offer) {
+            let bc = this.components.find(c => c.componentId === componentId);
+            if (bc) { bc.selectedOffer = offer; this._touch(); }
+        }
+        getComponentDetails() {
+            return this.components.map(bc => {
+                let comp = components.find(c => c.id === bc.componentId);
+                if (!comp) return null;
+                return { ...comp, quantity: bc.quantity, selectedOffer: bc.selectedOffer };
+            }).filter(c => c);
+        }
+        exportToJSON() {
+            return JSON.stringify({
+                id: this.id, name: this.name, description: this.description,
+                components: this.components.map(bc => ({ componentId: bc.componentId, quantity: bc.quantity, selectedOffer: bc.selectedOffer })),
+                createdAt: this.createdAt, updatedAt: this.updatedAt
+            }, null, 2);
+        }
+        static importFromJSON(jsonStr) {
+            let data = JSON.parse(jsonStr);
+            let build = new Build(data.id, data.name, data.description);
+            build.components = data.components.map(bc => new BuildComponent(bc.componentId, bc.quantity, bc.selectedOffer));
+            build.createdAt = data.createdAt;
+            build.updatedAt = data.updatedAt;
+            return build;
+        }
+        getTotalPrice() {
+            let total = 0;
+            for (let bc of this.components) if (bc.selectedOffer) total += bc.selectedOffer.price * bc.quantity;
+            return total;
+        }
+        getTotalsByMarketplace() {
+            let totals = { Ozon: 0, Wildberries: 0, "Яндекс.Маркет": 0 };
+            for (let bc of this.components) {
+                if (bc.selectedOffer) {
+                    let mp = bc.selectedOffer.marketplace;
+                    if (mp === "Ozon") totals.Ozon += bc.selectedOffer.price * bc.quantity;
+                    else if (mp === "Wildberries") totals.Wildberries += bc.selectedOffer.price * bc.quantity;
+                    else if (mp === "Яндекс.Маркет") totals["Яндекс.Маркет"] += bc.selectedOffer.price * bc.quantity;
+                }
+            }
+            return totals;
+        }
+    }
+
+    // ---------- Загрузка каталога ----------
+    async function loadComponents() {
+        try {
+            const response = await fetch('components.json');
+            if (!response.ok) throw new Error();
+            const data = await response.json();
+            components = data.components;
+            renderComponentsList();
+        } catch (err) {
+            componentsListDiv.innerHTML = 'Ошибка загрузки каталога. Убедитесь, что components.json существует.';
+        }
+    }
+
+    function getOffersForComponent(componentId) {
+        const comp = components.find(c => c.id === componentId);
+        if (!comp || !comp.offers) return [];
+        return comp.offers.map(o => new Offer(o.marketplace, o.price, true, o.deliveryDays, o.rating, o.url));
+    }
+
+    function getComponentMinPrice(comp) {
+        if (!comp.offers || !comp.offers.length) return 0;
+        return Math.min(...comp.offers.map(o => o.price));
+    }
+
+    function sortComponentsList(arr) {
+        if (!activeSorts.length) return arr;
+        return [...arr].sort((a,b) => {
+            for (let s of activeSorts) {
+                let valA, valB;
+                if (s.field === 'price') { valA = getComponentMinPrice(a); valB = getComponentMinPrice(b); }
+                else if (s.field === 'manufacturer') { valA = a.manufacturer; valB = b.manufacturer; }
+                else if (s.field === 'model') { valA = a.model; valB = b.model; }
+                else if (s.field === 'socket') { valA = a.specs.socket || ''; valB = b.specs.socket || ''; }
+                else if (s.field === 'tdp') { valA = a.specs.tdp || 0; valB = b.specs.tdp || 0; }
+                else if (s.field === 'capacity') { valA = a.specs.capacity || 0; valB = b.specs.capacity || 0; }
+                else continue;
+                if (valA !== valB) return s.direction === 'asc' ? (valA > valB ? 1 : -1) : (valA < valB ? 1 : -1);
+            }
+            return 0;
+        });
+    }
+
+    function renderComponentsList() {
+        let search = document.getElementById('searchInput').value.toLowerCase();
+        let category = document.getElementById('categoryFilter').value;
+        let filtered = components.filter(c => {
+            if (category !== 'all' && c.category !== category) return false;
+            if (search && !c.model.toLowerCase().includes(search) && !c.manufacturer.toLowerCase().includes(search)) return false;
+            return true;
+        });
+        filtered = sortComponentsList(filtered);
+        componentsListDiv.innerHTML = '';
+        for (let comp of filtered) {
+            let minPrice = getComponentMinPrice(comp);
+            let card = document.createElement('div');
+            card.className = 'component-card';
+            card.innerHTML = `
+                <div><strong>${comp.manufacturer} ${comp.model}</strong> <span style="color:#aaa;">${comp.category}</span></div>
+                <div class="price">💰 от ${minPrice} ₽</div>
+                <button data-id="${comp.id}" class="addToBuildBtn">➕ Добавить в сборку</button>
+            `;
+            componentsListDiv.appendChild(card);
+        }
+        document.querySelectorAll('.addToBuildBtn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                let id = btn.dataset.id;
+                currentBuild.addComponent(id, 1);
+                updateBuildUI();
+            });
+        });
+    }
+
+    async function checkCompatibility(build) {
+        const details = build.getComponentDetails();
+        const results = [];
+        const cpu = details.find(c => c.category === 'cpu');
+        const mb = details.find(c => c.category === 'motherboard');
+        if (cpu && mb && cpu.specs.socket !== mb.specs.socket)
+            results.push({ status: 'error', message: `❌ Сокет CPU (${cpu.specs.socket}) не совместим с материнской платой (${mb.specs.socket}).` });
+        const ramModules = details.filter(c => c.category === 'ram');
+        if (mb && ramModules.length) {
+            const mbRamType = mb.specs.ramType;
+            const incompatible = ramModules.filter(r => r.specs.type !== mbRamType);
+            if (incompatible.length)
+                results.push({ status: 'error', message: `❌ Материнская плата поддерживает ${mbRamType}, но есть память: ${incompatible.map(r=>r.model).join(', ')}.` });
+            const totalRamSticks = ramModules.reduce((sum, r) => sum + (r.quantity || 1), 0);
+            const ramSlots = mb.specs.ramSlots || 4;
+            if (totalRamSticks > ramSlots)
+                results.push({ status: 'error', message: `❌ Количество планок ОЗУ (${totalRamSticks}) превышает число слотов (${ramSlots}).` });
+            const totalRamCapacity = ramModules.reduce((sum, r) => sum + (r.specs.capacity || 0) * (r.quantity || 1), 0);
+            const maxRam = mb.specs.maxRam || 128;
+            if (totalRamCapacity > maxRam)
+                results.push({ status: 'error', message: `❌ Суммарный объём ОЗУ (${totalRamCapacity} ГБ) превышает максимум (${maxRam} ГБ).` });
+        }
+        const psu = details.find(c => c.category === 'psu');
+        if (psu) {
+            let totalTdp = (cpu?.specs.tdp || 0);
+            const gpu = details.find(c => c.category === 'gpu');
+            totalTdp += (gpu?.specs.powerConsumption || 0);
+            const otherDevices = details.filter(c => ['storage','cooler','ram'].includes(c.category)).reduce((sum, d) => sum + (d.quantity || 1) * 10, 0);
+            totalTdp += otherDevices;
+            const required = Math.ceil(totalTdp * 1.2);
+            if (psu.specs.power < required)
+                results.push({ status: 'error', message: `❌ Блок питания (${psu.specs.power} Вт) слаб. Нужно ~${required} Вт.` });
+        }
+        const pcCase = details.find(c => c.category === 'case');
+        const gpu = details.find(c => c.category === 'gpu');
+        if (pcCase && gpu && gpu.specs.length > pcCase.specs.maxGpuLength)
+            results.push({ status: 'error', message: `❌ Видеокарта длиной ${gpu.specs.length} мм не влезает в корпус (макс. ${pcCase.specs.maxGpuLength} мм).` });
+        const cooler = details.find(c => c.category === 'cooler');
+        if (pcCase && cooler && cooler.specs.height > pcCase.specs.maxCpuCoolerHeight)
+            results.push({ status: 'error', message: `❌ Кулер высотой ${cooler.specs.height} мм не влезает (макс. ${pcCase.specs.maxCpuCoolerHeight} мм).` });
+        if (results.length === 0) results.push({ status: 'ok', message: '✅ Совместимость отличная!' });
+        return results;
+    }
+
+    async function updateBuildUI() {
+        if (!currentBuild) return;
+        buildNameInput.value = currentBuild.name;
+        buildDescInput.value = currentBuild.description;
+        let details = currentBuild.getComponentDetails();
+        buildComponentsDiv.innerHTML = '';
+        for (let comp of details) {
+            let offerInfo = comp.selectedOffer ? `${comp.selectedOffer.marketplace}: ${comp.selectedOffer.price} ₽, доставка ${comp.selectedOffer.deliveryDays} дн.` : 'Цена не выбрана';
+            let div = document.createElement('div');
+            div.className = 'build-item';
+            div.innerHTML = `
+                <div class="build-item-info">
+                    <strong>${comp.manufacturer} ${comp.model}</strong> x${comp.quantity}<br>
+                    <small>${offerInfo}</small>
+                </div>
+                <div class="build-item-actions">
+                    <button class="inc" data-id="${comp.id}" data-delta="1">+</button>
+                    <button class="dec" data-id="${comp.id}" data-delta="-1">-</button>
+                    <button class="selectOfferBtn" data-id="${comp.id}">💰</button>
+                    <button class="removeCompBtn" data-id="${comp.id}">❌</button>
+                </div>
+            `;
+            buildComponentsDiv.appendChild(div);
+        }
+        let totals = currentBuild.getTotalsByMarketplace();
+        ozonSpan.innerText = totals.Ozon;
+        wbSpan.innerText = totals.Wildberries;
+        yandexSpan.innerText = totals["Яндекс.Маркет"];
+        grandSpan.innerText = currentBuild.getTotalPrice();
+        let compat = await checkCompatibility(currentBuild);
+        compatibilityDiv.innerHTML = compat.map(c => `<div class="compat-message ${c.status}">${c.message}</div>`).join('');
+        saveBuildsToLocal();
+        if (userType === 'company') renderBuildsList();
+        // Управление кнопкой удаления
+        if (userType === 'company' && allBuilds.length > 1) {
+            deleteBuildBtn.style.display = 'inline-block';
+        } else {
+            deleteBuildBtn.style.display = 'none';
+        }
+    }
+
+    function saveBuildsToLocal() {
+        if (userType === 'company') {
+            const data = { builds: allBuilds.map(b => b.exportToJSON()), currentId: currentBuildId };
+            localStorage.setItem('pcraft_company_builds', JSON.stringify(data));
+        } else {
+            localStorage.setItem('pcraft_single_build', currentBuild.exportToJSON());
+        }
+    }
+
+    function loadBuildsFromLocal() {
+        if (userType === 'company') {
+            const raw = localStorage.getItem('pcraft_company_builds');
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    allBuilds = data.builds.map(json => Build.importFromJSON(json));
+                    currentBuildId = data.currentId;
+                    currentBuild = allBuilds.find(b => b.id === currentBuildId);
+                } catch(e) {}
+            }
+            if (!allBuilds.length) {
+                const newBuild = new Build(crypto.randomUUID(), "Сборка 1", "");
+                allBuilds = [newBuild];
+                currentBuildId = newBuild.id;
+                currentBuild = newBuild;
+            }
+        } else {
+            const raw = localStorage.getItem('pcraft_single_build');
+            if (raw) currentBuild = Build.importFromJSON(raw);
+            else currentBuild = new Build(crypto.randomUUID(), "Моя сборка", "");
+        }
+        if (userType === 'company') renderBuildsList();
+    }
+
+    function renderBuildsList() {
+        if (userType !== 'company') { buildsListContainer.style.display = 'none'; return; }
+        buildsListContainer.style.display = 'block';
+        buildsListContainer.innerHTML = '<strong>Мои сборки:</strong><br>';
+        allBuilds.forEach(b => {
+            const tab = document.createElement('span');
+            tab.className = 'build-tab' + (b.id === currentBuildId ? ' active' : '');
+            tab.innerText = b.name;
+            tab.onclick = () => { currentBuildId = b.id; currentBuild = b; updateBuildUI(); renderBuildsList(); };
+            buildsListContainer.appendChild(tab);
+        });
+        const newBtn = document.createElement('button');
+        newBtn.innerText = '+ Новая';
+        newBtn.style.background = '#1a1a1a'; newBtn.style.border = 'none'; newBtn.style.color = 'white'; newBtn.style.padding = '0.3rem 0.8rem'; newBtn.style.cursor = 'pointer';
+        newBtn.onclick = () => {
+            const newBuild = new Build(crypto.randomUUID(), `Сборка ${allBuilds.length+1}`, "");
+            allBuilds.push(newBuild);
+            currentBuildId = newBuild.id;
+            currentBuild = newBuild;
+            updateBuildUI();
+            renderBuildsList();
+        };
+        buildsListContainer.appendChild(newBtn);
+    }
+
+    function renderRecommendations() {
+        const recDiv = document.getElementById('recommendationsList');
+        const presets = [
+            { name: "🎮 Игровой (AMD/NVIDIA)", components: ['cpu_amd_ryzen7_7800x3d', 'mb_gigabyte_b650_aorus', 'gpu_nvidia_rtx4070ti', 'ram_corsair_32gb_ddr5', 'psu_corsair_850w', 'case_fractal_meshify2', 'cooler_arctic_liquid_360'] },
+            { name: "💼 Офисный (Intel)", components: ['cpu_intel_i5_13600k', 'mb_msi_b760_tomahawk', 'ram_kingston_32gb_ddr5', 'storage_samsung_1tb_nvme', 'psu_seasonic_750w', 'case_lianli_lancool3'] },
+            { name: "🚀 Рабочая станция", components: ['cpu_intel_i9_13900k', 'mb_asus_z790_rog', 'gpu_nvidia_rtx4090', 'ram_corsair_32gb_ddr5', 'storage_samsung_1tb_nvme', 'psu_corsair_850w', 'case_fractal_meshify2', 'cooler_noctua_nhd15'] }
+        ];
+        recDiv.innerHTML = '';
+        presets.forEach(preset => {
+            const btn = document.createElement('button');
+            btn.innerText = preset.name;
+            btn.style.background = '#1a1a1a'; btn.style.border = '1px solid #333'; btn.style.padding = '0.5rem 1rem'; btn.style.cursor = 'pointer'; btn.style.color = 'white'; btn.style.transition = '0.2s';
+            btn.onmouseenter = () => { btn.style.background = 'white'; btn.style.color = 'black'; };
+            btn.onmouseleave = () => { btn.style.background = '#1a1a1a'; btn.style.color = 'white'; };
+            btn.onclick = () => {
+                const newBuild = new Build(crypto.randomUUID(), preset.name, "Рекомендованная сборка");
+                preset.components.forEach(compId => {
+                    const comp = components.find(c => c.id === compId);
+                    if (comp && comp.offers && comp.offers.length) {
+                        const defaultOffer = new Offer(comp.offers[0].marketplace, comp.offers[0].price, true, comp.offers[0].deliveryDays, comp.offers[0].rating, comp.offers[0].url);
+                        newBuild.addComponent(compId, 1, defaultOffer);
+                    } else newBuild.addComponent(compId, 1);
+                });
+                if (userType === 'company') {
+                    allBuilds.push(newBuild);
+                    currentBuildId = newBuild.id;
+                    currentBuild = newBuild;
+                    renderBuildsList();
+                } else currentBuild = newBuild;
+                updateBuildUI();
+            };
+            recDiv.appendChild(btn);
+        });
+    }
+
+    function showOfferModal(componentId) {
+        currentComponentForOffer = componentId;
+        currentOffers = getOffersForComponent(componentId);
+        renderOffers(currentOffers);
+        document.getElementById('offerModal').style.display = 'flex';
+    }
+    function renderOffers(offers) {
+        const container = document.getElementById('offersList');
+        container.innerHTML = '';
+        offers.forEach(offer => {
+            const div = document.createElement('div');
+            div.className = 'offer-item';
+            div.innerHTML = `
+                <div><a href="${offer.url}" target="_blank">${offer.marketplace}</a> — ${offer.price} ₽</div>
+                <div>⭐ ${offer.sellerRating} | 📦 ${offer.deliveryDays} дн.</div>
+                <button data-mp="${offer.marketplace}" data-price="${offer.price}" data-days="${offer.deliveryDays}" data-rating="${offer.sellerRating}" data-url="${offer.url}" class="selectOfferBtnModal">Выбрать</button>
+            `;
+            container.appendChild(div);
+        });
+        document.querySelectorAll('.selectOfferBtnModal').forEach(btn => {
+            btn.onclick = () => {
+                const offer = new Offer(btn.dataset.mp, parseFloat(btn.dataset.price), true, parseInt(btn.dataset.days), parseFloat(btn.dataset.rating), btn.dataset.url);
+                currentBuild.setSelectedOffer(currentComponentForOffer, offer);
+                updateBuildUI();
+                closeModal();
+            };
+        });
+    }
+    function closeModal() { document.getElementById('offerModal').style.display = 'none'; }
+
+    function bindEvents() {
+        document.getElementById('toggleCatalogBtn').onclick = () => document.getElementById('leftPanel').classList.toggle('collapsed');
+        let controlVisible = true;
+        document.getElementById('toggleControlBtn').onclick = () => {
+            const btns = document.getElementById('controlButtons');
+            controlVisible = !controlVisible;
+            btns.style.display = controlVisible ? 'flex' : 'none';
+            document.querySelector('#toggleControlBtn span:last-child').innerHTML = controlVisible ? '▼' : '▲';
+        };
+        document.getElementById('searchInput').addEventListener('input', renderComponentsList);
+        document.getElementById('categoryFilter').addEventListener('change', renderComponentsList);
+        document.getElementById('refreshCatalogBtn').addEventListener('click', loadComponents);
+        document.getElementById('newBuildBtn').onclick = () => {
+            const newBuild = new Build(crypto.randomUUID(), "Новая сборка", "");
+            if (userType === 'company') { allBuilds.push(newBuild); currentBuildId = newBuild.id; currentBuild = newBuild; renderBuildsList(); }
+            else currentBuild = newBuild;
+            updateBuildUI();
+        };
+        document.getElementById('saveBuildBtn').onclick = () => {
+            const blob = new Blob([currentBuild.exportToJSON()], {type: 'application/json'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `build_${currentBuild.id}.pcraft`;
+            a.click();
+        };
+        document.getElementById('loadBuildBtn').onclick = () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.pcraft,.json';
+            input.onchange = async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const text = await file.text();
+                const build = Build.importFromJSON(text);
+                build.id = crypto.randomUUID();
+                if (userType === 'company') { allBuilds.push(build); currentBuildId = build.id; currentBuild = build; renderBuildsList(); }
+                else currentBuild = build;
+                updateBuildUI();
+            };
+            input.click();
+        };
+        document.getElementById('exportCSVBtn').onclick = async () => {
+            let csv = "Компонент,Производитель,Модель,Кол-во,Цена,Продавец,Доставка\n";
+            for (let comp of currentBuild.getComponentDetails()) {
+                let off = comp.selectedOffer;
+                csv += `${comp.category},${comp.manufacturer},${comp.model},${comp.quantity},${off ? off.price : "—"},${off ? off.marketplace : "—"},${off ? off.deliveryDays : "—"}\n`;
+            }
+            csv += `Итого,,,${currentBuild.getTotalPrice()},,,\n`;
+            const blob = new Blob([csv], {type: 'text/csv'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `build_${currentBuild.id}.csv`;
+            a.click();
+        };
+        document.getElementById('exportPDFBtn').onclick = () => {
+            const details = currentBuild.getComponentDetails();
+            let html = `<html><head><meta charset="UTF-8"><title>${currentBuild.name}</title><style>body{font-family:Arial;} table{border-collapse:collapse;} th,td{border:1px solid #ddd;padding:8px;}</style></head><body>
+            <h1>${currentBuild.name}</h1><p>${currentBuild.description}</p>
+            <table border="1"><thead><tr><th>Категория</th><th>Производитель</th><th>Модель</th><th>Кол-во</th><th>Цена</th><th>Продавец</th><th>Доставка</th></tr></thead><tbody>`;
+            for (let c of details) {
+                let off = c.selectedOffer;
+                html += `<tr><td>${c.category}</td><td>${c.manufacturer}</td><td>${c.model}</td><td>${c.quantity}</td><td>${off ? off.price : "—"}</td><td>${off ? off.marketplace : "—"}</td><td>${off ? off.deliveryDays : "—"}</td></tr>`;
+            }
+            html += `</tbody></table><p>Итого: ${currentBuild.getTotalPrice()} руб.</p></body></html>`;
+            const w = window.open("", "_blank");
+            w.document.write(html);
+            w.document.close();
+            w.print();
+        };
+        document.getElementById('userTypeSelect').addEventListener('change', (e) => {
+            userType = e.target.value;
+            localStorage.setItem('pcraft_user_type', userType);
+            document.querySelectorAll('.company-only').forEach(btn => btn.style.display = userType === 'company' ? 'inline-block' : 'none');
+            loadBuildsFromLocal();
+            updateBuildUI();
+        });
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('selectOfferBtn')) showOfferModal(e.target.dataset.id);
+            if (e.target.classList.contains('removeCompBtn')) { currentBuild.removeComponent(e.target.dataset.id, true); updateBuildUI(); }
+            if (e.target.classList.contains('inc')) { currentBuild.addComponent(e.target.dataset.id, 1); updateBuildUI(); }
+            if (e.target.classList.contains('dec')) { currentBuild.removeComponent(e.target.dataset.id, false); updateBuildUI(); }
+        });
+        document.getElementById('closeModal').onclick = closeModal;
+        document.getElementById('setManualBtn').onclick = () => {
+            const price = parseFloat(document.getElementById('manualPrice').value);
+            const days = parseInt(document.getElementById('manualDelivery').value) || 3;
+            if (!isNaN(price) && currentComponentForOffer) {
+                const manualOffer = new Offer("Вручную", price, true, days, null, "#");
+                currentBuild.setSelectedOffer(currentComponentForOffer, manualOffer);
+                updateBuildUI();
+                closeModal();
+            } else alert('Введите цену');
+        };
+        // Редактирование названия и описания
+        buildNameInput.addEventListener('change', (e) => {
+            currentBuild.name = e.target.value;
+            currentBuild._touch();
+            saveBuildsToLocal();
+            if (userType === 'company') renderBuildsList();
+        });
+        buildDescInput.addEventListener('change', (e) => {
+            currentBuild.description = e.target.value;
+            currentBuild._touch();
+            saveBuildsToLocal();
+        });
+        deleteBuildBtn.onclick = () => {
+            if (userType === 'company' && allBuilds.length > 1) {
+                const idx = allBuilds.findIndex(b => b.id === currentBuildId);
+                if (idx !== -1) allBuilds.splice(idx, 1);
+                if (allBuilds.length) {
+                    currentBuildId = allBuilds[0].id;
+                    currentBuild = allBuilds[0];
+                } else {
+                    const newBuild = new Build(crypto.randomUUID(), "Сборка 1", "");
+                    allBuilds = [newBuild];
+                    currentBuildId = newBuild.id;
+                    currentBuild = newBuild;
+                }
+                updateBuildUI();
+                renderBuildsList();
+            } else {
+                // Для обычного пользователя – просто сброс к новой сборке
+                currentBuild = new Build(crypto.randomUUID(), "Моя сборка", "");
+                updateBuildUI();
+            }
+        };
+        // Многоуровневая сортировка
+        const sortContainer = document.getElementById('sortContainer');
+        const sortFields = [
+            { label: 'Цена', field: 'price' },
+            { label: 'Производитель', field: 'manufacturer' },
+            { label: 'Модель', field: 'model' },
+            { label: 'Сокет', field: 'socket' },
+            { label: 'TDP', field: 'tdp' },
+            { label: 'Объём', field: 'capacity' }
+        ];
+        sortFields.forEach(f => {
+            const chip = document.createElement('div');
+            chip.className = 'sort-chip';
+            chip.innerText = f.label;
+            chip.dataset.field = f.field;
+            chip.onclick = () => {
+                const existing = activeSorts.find(s => s.field === f.field);
+                if (existing) {
+                    existing.direction = existing.direction === 'asc' ? 'desc' : 'asc';
+                    chip.innerText = f.label + (existing.direction === 'asc' ? ' ↑' : ' ↓');
+                } else {
+                    activeSorts.push({ field: f.field, direction: 'asc' });
+                    chip.innerText = f.label + ' ↑';
+                    chip.classList.add('active');
+                }
+                renderComponentsList();
+            };
+            sortContainer.appendChild(chip);
+        });
+    }
+
+    async function init() {
+        await loadComponents();
+        const savedType = localStorage.getItem('pcraft_user_type');
+        if (savedType) userType = savedType;
+        userTypeSelect.value = userType;
+        document.querySelectorAll('.company-only').forEach(btn => btn.style.display = userType === 'company' ? 'inline-block' : 'none');
+        loadBuildsFromLocal();
+        updateBuildUI();
+        bindEvents();
+        renderRecommendations();
+    }
+    init();
+</script>
+</body>
+</html>
