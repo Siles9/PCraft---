@@ -876,6 +876,7 @@ async function runCatalogCrawler() {
     if (browser) await browser.close();
   }
 }
+
 async function updateAllPrices() {
   console.log('\n💰 Обновление цен...');
   try {

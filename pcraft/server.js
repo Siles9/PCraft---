@@ -12,37 +12,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/components', require('./routes/components'));
 app.use('/api/prices', require('./routes/prices'));
 
-// Запускаем краулер при старте
-(async function() {
-  console.log('\n🚀 PCraft - сборка каталога из Ситилинк, DNS, Регард\n');
-  console.log('📡 Начинаем сбор товаров...\n');
-
+(async () => {
+  console.log('🚀 Запуск первичного сбора каталога...\n');
   await runCatalogCrawler();
-
-  console.log('\n✅ Первичный сбор каталога завершён!');
-  console.log('🔄 Автообновление настроено каждый час\n');
+  console.log('✅ Каталог собран и сохранён в cache/components.json');
 })();
 
-// Автоматическое обновление каталога каждый час
-cron.schedule('0 * * * *', async function() {
-  console.log('\n🔄 Плановое обновление каталога...');
+cron.schedule('0 * * * *', async () => {
+  console.log('🔄 Плановый сбор каталога...');
   await runCatalogCrawler();
 });
 
-// Также можно обновлять каждые 30 минут для более частого обновления
-cron.schedule('30 * * * *', async function() {
-  console.log('\n🔄 Промежуточное обновление цен...');
-  await updatePrices();
+app.listen(PORT, () => {
+  console.log(`🖥️  Сервер PCraft запущен на http://localhost:${PORT}`);
 });
-
-app.listen(PORT, function() {
-  console.log('🖥️  Сервер запущен на http://localhost:' + PORT);
-  console.log('📦 Каталог доступен по /api/components');
-  console.log('💰 Цены доступны по /api/prices\n');
-});
-
-// Функция обновления только цен
-async function updatePrices() {
-  const { updateAllPrices } = require('./crawler/catalogCrawler');
-  await updateAllPrices();
-}

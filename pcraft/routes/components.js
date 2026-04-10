@@ -10,11 +10,7 @@ router.get('/', async (req, res) => {
     const data = await fs.readFile(CACHE_FILE, 'utf-8');
     res.json(JSON.parse(data));
   } catch (err) {
-    console.error('Ошибка чтения каталога:', err);
-    res.status(500).json({
-      error: 'Каталог временно недоступен',
-      components: []
-    });
+    res.status(500).json({ error: 'Каталог временно недоступен', components: [] });
   }
 });
 
