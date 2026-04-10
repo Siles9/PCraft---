@@ -1,1 +1,876 @@
 
+{
+  "components": [
+    {
+      "id": "cpu_intel_i9_14900k",
+      "category": "cpu",
+      "manufacturer": "Intel",
+      "model": "Core i9-14900K",
+      "specs": {
+        "socket": "LGA1700",
+        "tdp": 125,
+        "cores": 24,
+        "threads": 32,
+        "frequency": "6.0 GHz",
+        "cache": "36MB"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Intel+Core+i9-14900K", "price": 65990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Intel+Core+i9-14900K", "price": 66990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Intel+Core+i9-14900K", "price": 64990 }
+      ]
+    },
+    {
+      "id": "cpu_intel_i7_14700k",
+      "category": "cpu",
+      "manufacturer": "Intel",
+      "model": "Core i7-14700K",
+      "specs": {
+        "socket": "LGA1700",
+        "tdp": 125,
+        "cores": 20,
+        "threads": 28,
+        "frequency": "5.6 GHz",
+        "cache": "33MB"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Intel+Core+i7-14700K", "price": 45990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Intel+Core+i7-14700K", "price": 46990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Intel+Core+i7-14700K", "price": 44990 }
+      ]
+    },
+    {
+      "id": "cpu_intel_i5_14600k",
+      "category": "cpu",
+      "manufacturer": "Intel",
+      "model": "Core i5-14600K",
+      "specs": {
+        "socket": "LGA1700",
+        "tdp": 125,
+        "cores": 14,
+        "threads": 20,
+        "frequency": "5.3 GHz",
+        "cache": "24MB"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Intel+Core+i5-14600K", "price": 32990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Intel+Core+i5-14600K", "price": 33990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Intel+Core+i5-14600K", "price": 31990 }
+      ]
+    },
+    {
+      "id": "cpu_intel_i3_14100f",
+      "category": "cpu",
+      "manufacturer": "Intel",
+      "model": "Core i3-14100F",
+      "specs": {
+        "socket": "LGA1700",
+        "tdp": 65,
+        "cores": 4,
+        "threads": 8,
+        "frequency": "4.7 GHz",
+        "cache": "12MB"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Intel+Core+i3-14100F", "price": 13990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Intel+Core+i3-14100F", "price": 14990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Intel+Core+i3-14100F", "price": 12990 }
+      ]
+    },
+    {
+      "id": "cpu_amd_ryzen9_7950x3d",
+      "category": "cpu",
+      "manufacturer": "AMD",
+      "model": "Ryzen 9 7950X3D",
+      "specs": {
+        "socket": "AM5",
+        "tdp": 120,
+        "cores": 16,
+        "threads": 32,
+        "frequency": "5.7 GHz",
+        "cache": "128MB"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=AMD+Ryzen+9+7950X3D", "price": 69990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=AMD+Ryzen+9+7950X3D", "price": 70990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=AMD+Ryzen+9+7950X3D", "price": 68990 }
+      ]
+    },
+    {
+      "id": "cpu_amd_ryzen7_7800x3d",
+      "category": "cpu",
+      "manufacturer": "AMD",
+      "model": "Ryzen 7 7800X3D",
+      "specs": {
+        "socket": "AM5",
+        "tdp": 120,
+        "cores": 8,
+        "threads": 16,
+        "frequency": "5.0 GHz",
+        "cache": "104MB"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=AMD+Ryzen+7+7800X3D", "price": 41990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=AMD+Ryzen+7+7800X3D", "price": 42990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=AMD+Ryzen+7+7800X3D", "price": 40990 }
+      ]
+    },
+    {
+      "id": "cpu_amd_ryzen5_7600x",
+      "category": "cpu",
+      "manufacturer": "AMD",
+      "model": "Ryzen 5 7600X",
+      "specs": {
+        "socket": "AM5",
+        "tdp": 105,
+        "cores": 6,
+        "threads": 12,
+        "frequency": "5.3 GHz",
+        "cache": "38MB"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=AMD+Ryzen+5+7600X", "price": 23990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=AMD+Ryzen+5+7600X", "price": 24990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=AMD+Ryzen+5+7600X", "price": 22990 }
+      ]
+    },
+    {
+      "id": "cpu_amd_ryzen5_7500f",
+      "category": "cpu",
+      "manufacturer": "AMD",
+      "model": "Ryzen 5 7500F",
+      "specs": {
+        "socket": "AM5",
+        "tdp": 65,
+        "cores": 6,
+        "threads": 12,
+        "frequency": "5.0 GHz",
+        "cache": "38MB"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=AMD+Ryzen+5+7500F", "price": 18990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=AMD+Ryzen+5+7500F", "price": 19990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=AMD+Ryzen+5+7500F", "price": 17990 }
+      ]
+    },
+    {
+      "id": "mb_asus_rog_z790",
+      "category": "motherboard",
+      "manufacturer": "ASUS",
+      "model": "ROG MAXIMUS Z790 HERO",
+      "specs": {
+        "socket": "LGA1700",
+        "formFactor": "ATX",
+        "ramType": "DDR5",
+        "ramSlots": 4,
+        "maxRam": 192,
+        "m2Slots": 5
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=ASUS+ROG+MAXIMUS+Z790+HERO", "price": 62990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=ASUS+ROG+MAXIMUS+Z790+HERO", "price": 63990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=ASUS+ROG+MAXIMUS+Z790+HERO", "price": 61990 }
+      ]
+    },
+    {
+      "id": "mb_msi_z790_tomahawk",
+      "category": "motherboard",
+      "manufacturer": "MSI",
+      "model": "MPG Z790 TOMAHAWK WIFI",
+      "specs": {
+        "socket": "LGA1700",
+        "formFactor": "ATX",
+        "ramType": "DDR5",
+        "ramSlots": 4,
+        "maxRam": 192,
+        "m2Slots": 4
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=MSI+MPG+Z790+TOMAHAWK", "price": 29990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=MSI+MPG+Z790+TOMAHAWK", "price": 30990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=MSI+MPG+Z790+TOMAHAWK", "price": 28990 }
+      ]
+    },
+    {
+      "id": "mb_gigabyte_b760_aorus",
+      "category": "motherboard",
+      "manufacturer": "Gigabyte",
+      "model": "B760 AORUS ELITE AX",
+      "specs": {
+        "socket": "LGA1700",
+        "formFactor": "ATX",
+        "ramType": "DDR5",
+        "ramSlots": 4,
+        "maxRam": 192,
+        "m2Slots": 3
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Gigabyte+B760+AORUS", "price": 19990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Gigabyte+B760+AORUS", "price": 20990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Gigabyte+B760+AORUS", "price": 18990 }
+      ]
+    },
+    {
+      "id": "mb_asus_x670e_rog",
+      "category": "motherboard",
+      "manufacturer": "ASUS",
+      "model": "ROG CROSSHAIR X670E HERO",
+      "specs": {
+        "socket": "AM5",
+        "formFactor": "ATX",
+        "ramType": "DDR5",
+        "ramSlots": 4,
+        "maxRam": 192,
+        "m2Slots": 5
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=ASUS+ROG+CROSSHAIR+X670E", "price": 67990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=ASUS+ROG+CROSSHAIR+X670E", "price": 68990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=ASUS+ROG+CROSSHAIR+X670E", "price": 66990 }
+      ]
+    },
+    {
+      "id": "mb_msi_b650_tomahawk",
+      "category": "motherboard",
+      "manufacturer": "MSI",
+      "model": "MAG B650 TOMAHAWK WIFI",
+      "specs": {
+        "socket": "AM5",
+        "formFactor": "ATX",
+        "ramType": "DDR5",
+        "ramSlots": 4,
+        "maxRam": 192,
+        "m2Slots": 3
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=MSI+MAG+B650+TOMAHAWK", "price": 22990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=MSI+MAG+B650+TOMAHAWK", "price": 23990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=MSI+MAG+B650+TOMAHAWK", "price": 21990 }
+      ]
+    },
+    {
+      "id": "mb_asrock_b650_pro",
+      "category": "motherboard",
+      "manufacturer": "ASRock",
+      "model": "B650 PRO RS",
+      "specs": {
+        "socket": "AM5",
+        "formFactor": "ATX",
+        "ramType": "DDR5",
+        "ramSlots": 4,
+        "maxRam": 192,
+        "m2Slots": 3
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=ASRock+B650+PRO+RS", "price": 17990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=ASRock+B650+PRO+RS", "price": 18990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=ASRock+B650+PRO+RS", "price": 16990 }
+      ]
+    },
+    {
+      "id": "gpu_nvidia_rtx4090",
+      "category": "gpu",
+      "manufacturer": "NVIDIA",
+      "model": "GeForce RTX 4090 24GB",
+      "specs": {
+        "vram": 24,
+        "powerConsumption": 450,
+        "length": 336,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6X"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=RTX+4090", "price": 169990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=RTX+4090", "price": 172990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=RTX+4090", "price": 167990 }
+      ]
+    },
+    {
+      "id": "gpu_nvidia_rtx4080_super",
+      "category": "gpu",
+      "manufacturer": "NVIDIA",
+      "model": "GeForce RTX 4080 SUPER 16GB",
+      "specs": {
+        "vram": 16,
+        "powerConsumption": 320,
+        "length": 310,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6X"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=RTX+4080+SUPER", "price": 109990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=RTX+4080+SUPER", "price": 112990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=RTX+4080+SUPER", "price": 107990 }
+      ]
+    },
+    {
+      "id": "gpu_nvidia_rtx4070_ti_super",
+      "category": "gpu",
+      "manufacturer": "NVIDIA",
+      "model": "GeForce RTX 4070 Ti SUPER 16GB",
+      "specs": {
+        "vram": 16,
+        "powerConsumption": 285,
+        "length": 305,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6X"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=RTX+4070+Ti+SUPER", "price": 79990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=RTX+4070+Ti+SUPER", "price": 81990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=RTX+4070+Ti+SUPER", "price": 78990 }
+      ]
+    },
+    {
+      "id": "gpu_nvidia_rtx4070_super",
+      "category": "gpu",
+      "manufacturer": "NVIDIA",
+      "model": "GeForce RTX 4070 SUPER 12GB",
+      "specs": {
+        "vram": 12,
+        "powerConsumption": 220,
+        "length": 290,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6X"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=RTX+4070+SUPER", "price": 59990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=RTX+4070+SUPER", "price": 61990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=RTX+4070+SUPER", "price": 58990 }
+      ]
+    },
+    {
+      "id": "gpu_nvidia_rtx4060_ti",
+      "category": "gpu",
+      "manufacturer": "NVIDIA",
+      "model": "GeForce RTX 4060 Ti 8GB",
+      "specs": {
+        "vram": 8,
+        "powerConsumption": 160,
+        "length": 250,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=RTX+4060+Ti", "price": 39990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=RTX+4060+Ti", "price": 40990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=RTX+4060+Ti", "price": 38990 }
+      ]
+    },
+    {
+      "id": "gpu_amd_rx7900xtx",
+      "category": "gpu",
+      "manufacturer": "AMD",
+      "model": "Radeon RX 7900 XTX 24GB",
+      "specs": {
+        "vram": 24,
+        "powerConsumption": 355,
+        "length": 340,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=RX+7900+XTX", "price": 89990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=RX+7900+XTX", "price": 91990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=RX+7900+XTX", "price": 87990 }
+      ]
+    },
+    {
+      "id": "gpu_amd_rx7900xt",
+      "category": "gpu",
+      "manufacturer": "AMD",
+      "model": "Radeon RX 7900 XT 20GB",
+      "specs": {
+        "vram": 20,
+        "powerConsumption": 315,
+        "length": 330,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=RX+7900+XT", "price": 69990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=RX+7900+XT", "price": 71990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=RX+7900+XT", "price": 68990 }
+      ]
+    },
+    {
+      "id": "gpu_amd_rx7800xt",
+      "category": "gpu",
+      "manufacturer": "AMD",
+      "model": "Radeon RX 7800 XT 16GB",
+      "specs": {
+        "vram": 16,
+        "powerConsumption": 263,
+        "length": 310,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=RX+7800+XT", "price": 52990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=RX+7800+XT", "price": 54990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=RX+7800+XT", "price": 51990 }
+      ]
+    },
+    {
+      "id": "gpu_intel_arc_a770",
+      "category": "gpu",
+      "manufacturer": "Intel",
+      "model": "Arc A770 16GB",
+      "specs": {
+        "vram": 16,
+        "powerConsumption": 225,
+        "length": 280,
+        "interface": "PCIe 4.0",
+        "memoryType": "GDDR6"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Intel+Arc+A770", "price": 29990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Intel+Arc+A770", "price": 30990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Intel+Arc+A770", "price": 28990 }
+      ]
+    },
+    {
+      "id": "ram_corsair_ddr5_32gb",
+      "category": "ram",
+      "manufacturer": "Corsair",
+      "model": "Vengeance 32GB (2x16GB) DDR5-6000 CL36",
+      "specs": {
+        "type": "DDR5",
+        "capacity": 32,
+        "frequency": 6000,
+        "timings": "CL36",
+        "voltage": 1.35
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Corsair+Vengeance+32GB+DDR5+6000", "price": 12990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Corsair+Vengeance+32GB+DDR5+6000", "price": 13990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Corsair+Vengeance+32GB+DDR5+6000", "price": 11990 }
+      ]
+    },
+    {
+      "id": "ram_kingston_ddr5_32gb",
+      "category": "ram",
+      "manufacturer": "Kingston",
+      "model": "FURY Beast 32GB (2x16GB) DDR5-5600 CL40",
+      "specs": {
+        "type": "DDR5",
+        "capacity": 32,
+        "frequency": 5600,
+        "timings": "CL40",
+        "voltage": 1.25
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Kingston+FURY+Beast+32GB+DDR5", "price": 11990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Kingston+FURY+Beast+32GB+DDR5", "price": 12990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Kingston+FURY+Beast+32GB+DDR5", "price": 10990 }
+      ]
+    },
+    {
+      "id": "ram_gskill_ddr5_64gb",
+      "category": "ram",
+      "manufacturer": "G.Skill",
+      "model": "Trident Z5 RGB 64GB (2x32GB) DDR5-6400 CL32",
+      "specs": {
+        "type": "DDR5",
+        "capacity": 64,
+        "frequency": 6400,
+        "timings": "CL32",
+        "voltage": 1.4
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=G.Skill+Trident+Z5+64GB+DDR5", "price": 24990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=G.Skill+Trident+Z5+64GB+DDR5", "price": 25990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=G.Skill+Trident+Z5+64GB+DDR5", "price": 23990 }
+      ]
+    },
+    {
+      "id": "ram_adata_ddr4_32gb",
+      "category": "ram",
+      "manufacturer": "ADATA",
+      "model": "XPG Spectrix D50 32GB (2x16GB) DDR4-3600 CL18",
+      "specs": {
+        "type": "DDR4",
+        "capacity": 32,
+        "frequency": 3600,
+        "timings": "CL18",
+        "voltage": 1.35
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=ADATA+XPG+32GB+DDR4+3600", "price": 7990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=ADATA+XPG+32GB+DDR4+3600", "price": 8490 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=ADATA+XPG+32GB+DDR4+3600", "price": 7590 }
+      ]
+    },
+    {
+      "id": "storage_samsung_990pro_2tb",
+      "category": "storage",
+      "manufacturer": "Samsung",
+      "model": "990 PRO 2TB NVMe M.2",
+      "specs": {
+        "type": "NVMe SSD",
+        "capacity": 2048,
+        "interface": "PCIe 4.0",
+        "readSpeed": 7450,
+        "writeSpeed": 6900
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Samsung+990+PRO+2TB", "price": 18990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Samsung+990+PRO+2TB", "price": 19990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Samsung+990+PRO+2TB", "price": 17990 }
+      ]
+    },
+    {
+      "id": "storage_samsung_980pro_1tb",
+      "category": "storage",
+      "manufacturer": "Samsung",
+      "model": "980 PRO 1TB NVMe M.2",
+      "specs": {
+        "type": "NVMe SSD",
+        "capacity": 1024,
+        "interface": "PCIe 4.0",
+        "readSpeed": 7000,
+        "writeSpeed": 5000
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Samsung+980+PRO+1TB", "price": 9990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Samsung+980+PRO+1TB", "price": 10990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Samsung+980+PRO+1TB", "price": 9490 }
+      ]
+    },
+    {
+      "id": "storage_wd_black_sn850x_2tb",
+      "category": "storage",
+      "manufacturer": "Western Digital",
+      "model": "WD Black SN850X 2TB NVMe",
+      "specs": {
+        "type": "NVMe SSD",
+        "capacity": 2048,
+        "interface": "PCIe 4.0",
+        "readSpeed": 7300,
+        "writeSpeed": 6600
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=WD+Black+SN850X+2TB", "price": 16990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=WD+Black+SN850X+2TB", "price": 17990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=WD+Black+SN850X+2TB", "price": 15990 }
+      ]
+    },
+    {
+      "id": "storage_kingston_kc3000_1tb",
+      "category": "storage",
+      "manufacturer": "Kingston",
+      "model": "KC3000 1TB NVMe M.2",
+      "specs": {
+        "type": "NVMe SSD",
+        "capacity": 1024,
+        "interface": "PCIe 4.0",
+        "readSpeed": 7000,
+        "writeSpeed": 6000
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Kingston+KC3000+1TB", "price": 8990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Kingston+KC3000+1TB", "price": 9490 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Kingston+KC3000+1TB", "price": 8490 }
+      ]
+    },
+    {
+      "id": "storage_seagate_4tb_hdd",
+      "category": "storage",
+      "manufacturer": "Seagate",
+      "model": "BarraCuda 4TB HDD",
+      "specs": {
+        "type": "HDD",
+        "capacity": 4096,
+        "interface": "SATA 3",
+        "rpm": 5400,
+        "cache": 256
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Seagate+BarraCuda+4TB", "price": 8990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Seagate+BarraCuda+4TB", "price": 9490 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Seagate+BarraCuda+4TB", "price": 8490 }
+      ]
+    },
+    {
+      "id": "psu_corsair_rm1000x",
+      "category": "psu",
+      "manufacturer": "Corsair",
+      "model": "RM1000x 1000W 80 Plus Gold",
+      "specs": {
+        "power": 1000,
+        "efficiency": "Gold",
+        "modular": "full",
+        "certification": "80 Plus Gold"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Corsair+RM1000x", "price": 18990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Corsair+RM1000x", "price": 19990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Corsair+RM1000x", "price": 17990 }
+      ]
+    },
+    {
+      "id": "psu_seasonic_prime_850w",
+      "category": "psu",
+      "manufacturer": "Seasonic",
+      "model": "PRIME TX-850 850W 80 Plus Titanium",
+      "specs": {
+        "power": 850,
+        "efficiency": "Titanium",
+        "modular": "full",
+        "certification": "80 Plus Titanium"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Seasonic+PRIME+TX-850", "price": 22990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Seasonic+PRIME+TX-850", "price": 23990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Seasonic+PRIME+TX-850", "price": 21990 }
+      ]
+    },
+    {
+      "id": "psu_bequiet_darkpower13_850w",
+      "category": "psu",
+      "manufacturer": "be quiet!",
+      "model": "Dark Power 13 850W 80 Plus Titanium",
+      "specs": {
+        "power": 850,
+        "efficiency": "Titanium",
+        "modular": "full",
+        "certification": "80 Plus Titanium"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=be+quiet+Dark+Power+13+850W", "price": 24990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=be+quiet+Dark+Power+13+850W", "price": 25990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=be+quiet+Dark+Power+13+850W", "price": 23990 }
+      ]
+    },
+    {
+      "id": "psu_deepcool_pq1000m",
+      "category": "psu",
+      "manufacturer": "DeepCool",
+      "model": "PQ1000M 1000W 80 Plus Gold",
+      "specs": {
+        "power": 1000,
+        "efficiency": "Gold",
+        "modular": "full",
+        "certification": "80 Plus Gold"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=DeepCool+PQ1000M", "price": 13990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=DeepCool+PQ1000M", "price": 14990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=DeepCool+PQ1000M", "price": 12990 }
+      ]
+    },
+    {
+      "id": "psu_chieftec_powerup_750w",
+      "category": "psu",
+      "manufacturer": "Chieftec",
+      "model": "PowerUp GPX-750FC 750W 80 Plus Gold",
+      "specs": {
+        "power": 750,
+        "efficiency": "Gold",
+        "modular": "full",
+        "certification": "80 Plus Gold"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Chieftec+PowerUp+750W", "price": 7990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Chieftec+PowerUp+750W", "price": 8490 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Chieftec+PowerUp+750W", "price": 7590 }
+      ]
+    },
+    {
+      "id": "case_lianli_o11_dynamic",
+      "category": "case",
+      "manufacturer": "Lian Li",
+      "model": "O11 Dynamic EVO",
+      "specs": {
+        "formFactor": "ATX",
+        "maxGpuLength": 420,
+        "maxCpuCoolerHeight": 167,
+        "type": "Midi Tower"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Lian+Li+O11+Dynamic+EVO", "price": 14990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Lian+Li+O11+Dynamic+EVO", "price": 15990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Lian+Li+O11+Dynamic+EVO", "price": 13990 }
+      ]
+    },
+    {
+      "id": "case_fractal_north",
+      "category": "case",
+      "manufacturer": "Fractal Design",
+      "model": "North Charcoal Black",
+      "specs": {
+        "formFactor": "ATX",
+        "maxGpuLength": 355,
+        "maxCpuCoolerHeight": 170,
+        "type": "Midi Tower"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Fractal+Design+North", "price": 12990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Fractal+Design+North", "price": 13990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Fractal+Design+North", "price": 11990 }
+      ]
+    },
+    {
+      "id": "case_nzxt_h7_flow",
+      "category": "case",
+      "manufacturer": "NZXT",
+      "model": "H7 Flow",
+      "specs": {
+        "formFactor": "ATX",
+        "maxGpuLength": 400,
+        "maxCpuCoolerHeight": 185,
+        "type": "Midi Tower"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=NZXT+H7+Flow", "price": 11990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=NZXT+H7+Flow", "price": 12990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=NZXT+H7+Flow", "price": 10990 }
+      ]
+    },
+    {
+      "id": "case_corsair_5000d",
+      "category": "case",
+      "manufacturer": "Corsair",
+      "model": "5000D AIRFLOW",
+      "specs": {
+        "formFactor": "ATX",
+        "maxGpuLength": 420,
+        "maxCpuCoolerHeight": 170,
+        "type": "Midi Tower"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Corsair+5000D+AIRFLOW", "price": 13990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Corsair+5000D+AIRFLOW", "price": 14990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Corsair+5000D+AIRFLOW", "price": 12990 }
+      ]
+    },
+    {
+      "id": "case_deepcool_ch560",
+      "category": "case",
+      "manufacturer": "DeepCool",
+      "model": "CH560 DIGITAL",
+      "specs": {
+        "formFactor": "ATX",
+        "maxGpuLength": 380,
+        "maxCpuCoolerHeight": 175,
+        "type": "Midi Tower"
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=DeepCool+CH560", "price": 8990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=DeepCool+CH560", "price": 9490 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=DeepCool+CH560", "price": 8490 }
+      ]
+    },
+    {
+      "id": "cooler_noctua_nhd15_chromax",
+      "category": "cooler",
+      "manufacturer": "Noctua",
+      "model": "NH-D15 chromax.black",
+      "specs": {
+        "type": "air",
+        "height": 165,
+        "tdp": 250,
+        "fans": 2,
+        "sockets": ["LGA1700", "AM5", "AM4"]
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Noctua+NH-D15+chromax", "price": 10990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Noctua+NH-D15+chromax", "price": 11990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Noctua+NH-D15+chromax", "price": 9990 }
+      ]
+    },
+    {
+      "id": "cooler_deepcool_ak620",
+      "category": "cooler",
+      "manufacturer": "DeepCool",
+      "model": "AK620 ZERO DARK",
+      "specs": {
+        "type": "air",
+        "height": 160,
+        "tdp": 260,
+        "fans": 2,
+        "sockets": ["LGA1700", "AM5", "AM4"]
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=DeepCool+AK620", "price": 6990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=DeepCool+AK620", "price": 7490 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=DeepCool+AK620", "price": 6490 }
+      ]
+    },
+    {
+      "id": "cooler_arctic_liquid_iii_360",
+      "category": "cooler",
+      "manufacturer": "Arctic",
+      "model": "Liquid Freezer III 360",
+      "specs": {
+        "type": "liquid",
+        "height": 53,
+        "tdp": 300,
+        "radiator": 360,
+        "sockets": ["LGA1700", "AM5", "AM4"]
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Arctic+Liquid+Freezer+III+360", "price": 12990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Arctic+Liquid+Freezer+III+360", "price": 13990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Arctic+Liquid+Freezer+III+360", "price": 11990 }
+      ]
+    },
+    {
+      "id": "cooler_nzxt_kraken_360",
+      "category": "cooler",
+      "manufacturer": "NZXT",
+      "model": "Kraken 360 RGB",
+      "specs": {
+        "type": "liquid",
+        "height": 56,
+        "tdp": 280,
+        "radiator": 360,
+        "sockets": ["LGA1700", "AM5", "AM4"]
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=NZXT+Kraken+360", "price": 16990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=NZXT+Kraken+360", "price": 17990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=NZXT+Kraken+360", "price": 15990 }
+      ]
+    },
+    {
+      "id": "cooler_corsair_h150i_elite",
+      "category": "cooler",
+      "manufacturer": "Corsair",
+      "model": "iCUE H150i ELITE LCD XT",
+      "specs": {
+        "type": "liquid",
+        "height": 54,
+        "tdp": 300,
+        "radiator": 360,
+        "sockets": ["LGA1700", "AM5", "AM4"]
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=Corsair+H150i+ELITE", "price": 21990 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=Corsair+H150i+ELITE", "price": 22990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=Corsair+H150i+ELITE", "price": 20990 }
+      ]
+    },
+    {
+      "id": "cooler_idcooling_frozn_a620",
+      "category": "cooler",
+      "manufacturer": "ID-Cooling",
+      "model": "FROZN A620 BLACK",
+      "specs": {
+        "type": "air",
+        "height": 158,
+        "tdp": 260,
+        "fans": 2,
+        "sockets": ["LGA1700", "AM5", "AM4"]
+      },
+      "marketplaceUrls": [
+        { "marketplace": "Ситилинк", "url": "https://www.citilink.ru/search/?text=ID-Cooling+FROZN+A620", "price": 5490 },
+        { "marketplace": "DNS", "url": "https://www.dns-shop.ru/search/?q=ID-Cooling+FROZN+A620", "price": 5990 },
+        { "marketplace": "Регард", "url": "https://www.regard.ru/search?search=ID-Cooling+FROZN+A620", "price": 4990 }
+      ]
+    }
+  ],
+  "updatedAt": "2026-04-10T12:00:00.000Z",
+  "totalCount": 48,
+  "sources": ["Ситилинк", "DNS", "Регард"]
+}
